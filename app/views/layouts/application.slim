@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1"
+    title= content_for?(:title) ? yield(:title) : Settings.app.title
+    /%meta{:content => content_for?(:description) ? yield(:description) : Settings.app.title, :name => "description"}
+    = include_ember_script_tags :mesh
+    = include_ember_stylesheet_tags :mesh
+    = csrf_meta_tags
+  body class = "#{controller_name} #{action_name}"
+    /= render 'layouts/navigation'
+    /#main role = "main"
+    /  .container
+    /    .content
+    /      .row
+    /        .col-md-12
+    /          = render 'layouts/messages'
+    == yield
